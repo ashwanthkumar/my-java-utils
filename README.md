@@ -3,6 +3,30 @@
 # my-java-utils
 Set of Java utils that I take along with my OSS java projects. Most of them are influenced from [Scala](http://scala-lang.org/) world and [Guava](https://github.com/google/guava) library. Library has zero external dependencies. If you find some implementations can be better, please do let me know.
 
+## Features
+### List
+- Lists#map
+- Lists#filter
+- Lists#foldL
+- Lists#find
+- Lists#isEmpty
+- Lists#nonEmpty
+- Lists#mkString
+
+### Set
+- Sets#copy
+- Sets#isEmpty
+- Sets#nonEmpty
+
+### Iterable
+- Iterables#exists
+- Iterables#forall
+
+### Lang
+- Option / Some / None
+- Tuple2 / Tuple3
+- Function
+- Predicate
 
 ## License
 http://www.apache.org/licenses/LICENSE-2.0
