@@ -28,5 +28,21 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 - Function
 - Predicate
 
+## Dependencies
+
+For Maven,
+```xml
+<dependency>
+  <groupId>in.ashwanthkumar</groupId>
+  <artifactId>my-java-utils</artifactId>
+  <version>0.0.2</version>
+</dependency>
+```
+
+For SBT,
+```
+libraryDependencies += "in.ashwanthkumar" % "my-java-utils" % "0.0.2"
+```
+
 ## License
 http://www.apache.org/licenses/LICENSE-2.0
