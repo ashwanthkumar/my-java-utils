@@ -28,6 +28,12 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 - Function
 - Predicate
 
+### StringUtils
+- StringUtils#isNotEmpty
+- StringUtils#isEmpty
+- StringUtils#startsWith
+- StringUtils#size
+
 ## Dependencies
 
 For Maven,
