@@ -20,6 +20,14 @@ public class Lists {
         return list;
     }
 
+    public static <T, U> List<U> map(List<T> list, Function<T, U> transformation) {
+        ArrayList<U> transformed = new ArrayList<U>();
+        for (T item : list) {
+            transformed.add(transformation.apply(item));
+        }
+        return transformed;
+    }
+
     public static <T> List<T> filter(List<T> list, Predicate<T> condition) {
         ArrayList<T> filteredList = new ArrayList<T>();
         for (T item : list) {
