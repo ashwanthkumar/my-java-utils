@@ -25,6 +25,10 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 - Iterables#exists
 - Iterables#forall
 
+### Maps
+- Maps#of
+- Maps#builder
+
 ### Lang
 - Option / Some / None
 - Tuple2 / Tuple3
