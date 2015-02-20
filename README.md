@@ -12,6 +12,9 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 - Lists#isEmpty
 - Lists#nonEmpty
 - Lists#mkString
+- Lists#head
+- Lists#headOption
+- Lists#Nil
 
 ### Set
 - Sets#copy
@@ -27,6 +30,9 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 - Tuple2 / Tuple3
 - Function
 - Predicate
+
+### Functions
+- Functions#identity
 
 ### StringUtils
 - StringUtils#isNotEmpty
