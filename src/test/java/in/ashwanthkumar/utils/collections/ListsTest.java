@@ -49,15 +49,6 @@ public class ListsTest {
         assertThat(mkString(Lists.of(1, 2, 3, 4, 5)), is("1, 2, 3, 4, 5"));
         assertThat(mkString(Lists.of(1, 2, 3, 4, 5), "(", ")", ","), is("(1, 2, 3, 4, 5)"));
     }
-
-    @Test
-    public void shouldTestIfListIsEmptyOrNot() {
-        assertTrue(isEmpty(Lists.of()));
-
-        assertFalse(isEmpty(Lists.of(1)));
-        assertTrue(nonEmpty(Lists.of(1)));
-    }
-
     @Test
     public void shouldFindAnElementFromList() {
         Option<Integer> value = find(Lists.of(1, 2, 3, 4, 5), new Predicate<Integer>() {
@@ -87,29 +78,6 @@ public class ListsTest {
         assertThat(output.size(), is(10));
     }
 
-    @Test
-    public void shouldPickHeadElementFromList() {
-        List<Integer> list = Lists.of(1, 2, 3);
-        Integer head = head(list);
-        assertThat(head, is(1));
-    }
-
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void shouldThrowAnExceptionOnHeadFromEmptyList() {
-        head(Nil());
-        fail("Should not come here");
-    }
-
-    @Test
-    public void shouldReturnNoneForHeadOptionOnEmptyList() {
-        assertThat(headOption(Nil()), is(option(null)));
-    }
-
-    @Test
-    public void shouldReturnValueForHeadOption() {
-        List<Integer> list = Lists.of(1, 2, 3, 4, 5);
-        assertThat(headOption(list), is(option(1)));
-    }
 
     private Predicate<Integer> pickOddNumbers() {
         return new Predicate<Integer>() {

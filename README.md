@@ -9,11 +9,7 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 - Lists#filter
 - Lists#foldL
 - Lists#find
-- Lists#isEmpty
-- Lists#nonEmpty
 - Lists#mkString
-- Lists#head
-- Lists#headOption
 - Lists#Nil
 
 ### Set
@@ -24,6 +20,10 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 ### Iterable
 - Iterables#exists
 - Iterables#forall
+- Iterables#head
+- Iterables#headOption
+- Iterables#isEmpty
+- Iterables#nonEmpty
 
 ### Maps
 - Maps#of

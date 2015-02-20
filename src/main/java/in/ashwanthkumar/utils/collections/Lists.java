@@ -20,24 +20,15 @@ public class Lists {
         return new ArrayList<T>();
     }
 
-    public static <T> T head(List<T> list) {
-        return list.get(0);
-    }
-
-    public static <T> Option<T> headOption(List<T> list) {
-        if(list.isEmpty()) return option(null);
-        else return option(list.get(0));
-    }
-
     public static <T> List<T> of(T... elements) {
         ArrayList<T> list = new ArrayList<T>();
         Collections.addAll(list, elements);
         return list;
     }
 
-    public static <T, U> List<U> map(List<T> list, Function<T, U> transformation) {
+    public static <T, U> List<U> map(Iterable<T> collection, Function<T, U> transformation) {
         ArrayList<U> transformed = new ArrayList<U>();
-        for (T item : list) {
+        for (T item : collection) {
             transformed.add(transformation.apply(item));
         }
         return transformed;
@@ -47,48 +38,40 @@ public class Lists {
         return map(of(array), transformation);
     }
 
-    public static <T> List<T> filter(List<T> list, Predicate<T> condition) {
+    public static <T> List<T> filter(Iterable<T> collection, Predicate<T> condition) {
         ArrayList<T> filteredList = new ArrayList<T>();
-        for (T item : list) {
+        for (T item : collection) {
             if (condition.apply(item)) filteredList.add(item);
         }
         return filteredList;
     }
 
-    public static <T, Z> Z foldL(List<T> list, Z initialValue, Function<Tuple2<Z, T>, Z> foldFunction) {
+    public static <T, Z> Z foldL(Iterable<T> collection, Z initialValue, Function<Tuple2<Z, T>, Z> foldFunction) {
         Z foldedValue = initialValue;
-        for (T item : list) {
+        for (T item : collection) {
             foldedValue = foldFunction.apply(tuple2(foldedValue, item));
         }
 
         return foldedValue;
     }
 
-    public static <T> Option<T> find(List<T> list, Predicate<T> condition) {
-        for (T item : list) {
+    public static <T> Option<T> find(Iterable<T> collection, Predicate<T> condition) {
+        for (T item : collection) {
             if (condition.apply(item)) return option(item);
         }
 
         return new None<T>();
     }
 
-    public static <T> boolean isEmpty(List<T> list) {
-        return list == null || list.isEmpty();
+    public static <T> String mkString(Iterable<T> collection) {
+        return mkString(collection, "", "", ",");
     }
 
-    public static <T> boolean nonEmpty(List<T> list) {
-        return !isEmpty(list);
-    }
-
-    public static <T> String mkString(List<T> list) {
-        return mkString(list, "", "", ",");
-    }
-
-    public static <T> String mkString(List<T> list, String start, String end, String separator) {
+    public static <T> String mkString(Iterable<T> collection, String start, String end, String separator) {
         StringBuilder builder = new StringBuilder();
         builder.append(start);
-        for (T aList : list) {
-            builder.append(String.valueOf(aList));
+        for (T elem : collection) {
+            builder.append(String.valueOf(elem));
             builder.append(separator);
             builder.append(" ");
         }

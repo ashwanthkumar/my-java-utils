@@ -3,8 +3,13 @@ package in.ashwanthkumar.utils.collections;
 import in.ashwanthkumar.utils.func.Predicate;
 import org.junit.Test;
 
-import static in.ashwanthkumar.utils.collections.Iterables.exists;
-import static in.ashwanthkumar.utils.collections.Iterables.forall;
+import java.util.List;
+import java.util.NoSuchElementException;
+
+import static in.ashwanthkumar.utils.collections.Iterables.*;
+import static in.ashwanthkumar.utils.collections.Lists.Nil;
+import static in.ashwanthkumar.utils.lang.option.Option.option;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class IterablesTest {
@@ -47,5 +52,37 @@ public class IterablesTest {
         assertFalse(notForAll);
     }
 
+
+    @Test
+    public void shouldTestIfListIsEmptyOrNot() {
+        assertTrue(isEmpty(Lists.of()));
+
+        assertFalse(isEmpty(Lists.of(1)));
+        assertTrue(nonEmpty(Lists.of(1)));
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void shouldThrowAnExceptionOnHeadFromEmptyList() {
+        head(Nil());
+        fail("Should not come here");
+    }
+
+    @Test
+    public void shouldReturnNoneForHeadOptionOnEmptyList() {
+        assertThat(headOption(Nil()), is(option(null)));
+    }
+
+    @Test
+    public void shouldReturnValueForHeadOption() {
+        List<Integer> list = Lists.of(1, 2, 3, 4, 5);
+        assertThat(headOption(list), is(option(1)));
+    }
+
+    @Test
+    public void shouldPickHeadElementFromList() {
+        List<Integer> list = Lists.of(1, 2, 3);
+        Integer head = head(list);
+        assertThat(head, is(1));
+    }
 
 }
