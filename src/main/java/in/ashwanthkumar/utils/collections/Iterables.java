@@ -2,8 +2,11 @@ package in.ashwanthkumar.utils.collections;
 
 import in.ashwanthkumar.utils.func.Predicate;
 import in.ashwanthkumar.utils.lang.option.Option;
+import in.ashwanthkumar.utils.lang.tuple.Tuple2;
 
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import static in.ashwanthkumar.utils.lang.option.Option.option;
 
@@ -38,6 +41,14 @@ public class Iterables {
 
     public static <T> boolean nonEmpty(Iterable<T> list) {
         return !isEmpty(list);
+    }
+
+    public static <K,V> Map<K, V> toMap(Iterable<Tuple2<K, V>> tuples) {
+        HashMap<K, V> map = new HashMap<K, V>();
+        for (Tuple2<K, V> tuple : tuples) {
+            map.put(tuple._1(), tuple._2());
+        }
+        return map;
     }
 
 
