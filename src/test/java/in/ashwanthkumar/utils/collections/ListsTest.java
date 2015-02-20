@@ -1,14 +1,18 @@
 package in.ashwanthkumar.utils.collections;
 
 import in.ashwanthkumar.utils.func.Function;
+import in.ashwanthkumar.utils.func.Functions;
 import in.ashwanthkumar.utils.func.Predicate;
+import in.ashwanthkumar.utils.lang.option.None;
 import in.ashwanthkumar.utils.lang.option.Option;
 import in.ashwanthkumar.utils.lang.tuple.Tuple2;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 import static in.ashwanthkumar.utils.collections.Lists.*;
+import static in.ashwanthkumar.utils.lang.option.Option.option;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasItem;
 import static org.junit.Assert.*;
@@ -76,6 +80,36 @@ public class ListsTest {
         assertThat(notFound.getOrElse(5), is(5));
     }
 
+    @Test
+    public void shouldTransformAnArray() {
+        String input = "a b c d e f g h i j";
+        List<String> output = map(input.split(" "), Functions.<String>identity());
+        assertThat(output.size(), is(10));
+    }
+
+    @Test
+    public void shouldPickHeadElementFromList() {
+        List<Integer> list = Lists.of(1, 2, 3);
+        Integer head = head(list);
+        assertThat(head, is(1));
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void shouldThrowAnExceptionOnHeadFromEmptyList() {
+        head(Nil());
+        fail("Should not come here");
+    }
+
+    @Test
+    public void shouldReturnNoneForHeadOptionOnEmptyList() {
+        assertThat(headOption(Nil()), is(option(null)));
+    }
+
+    @Test
+    public void shouldReturnValueForHeadOption() {
+        List<Integer> list = Lists.of(1, 2, 3, 4, 5);
+        assertThat(headOption(list), is(option(1)));
+    }
 
     private Predicate<Integer> pickOddNumbers() {
         return new Predicate<Integer>() {

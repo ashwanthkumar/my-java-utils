@@ -4,6 +4,7 @@ import in.ashwanthkumar.utils.func.Function;
 import in.ashwanthkumar.utils.func.Predicate;
 import in.ashwanthkumar.utils.lang.option.None;
 import in.ashwanthkumar.utils.lang.option.Option;
+import in.ashwanthkumar.utils.lang.option.Some;
 import in.ashwanthkumar.utils.lang.tuple.Tuple2;
 
 import java.util.ArrayList;
@@ -14,6 +15,20 @@ import static in.ashwanthkumar.utils.lang.option.Option.option;
 import static in.ashwanthkumar.utils.lang.tuple.Tuple2.tuple2;
 
 public class Lists {
+
+    public static <T> List<T> Nil() {
+        return new ArrayList<T>();
+    }
+
+    public static <T> T head(List<T> list) {
+        return list.get(0);
+    }
+
+    public static <T> Option<T> headOption(List<T> list) {
+        if(list.isEmpty()) return option(null);
+        else return option(list.get(0));
+    }
+
     public static <T> List<T> of(T... elements) {
         ArrayList<T> list = new ArrayList<T>();
         Collections.addAll(list, elements);
@@ -26,6 +41,10 @@ public class Lists {
             transformed.add(transformation.apply(item));
         }
         return transformed;
+    }
+
+    public static <T, U> List<U> map(T[] array, Function<T, U> transformation) {
+        return map(of(array), transformation);
     }
 
     public static <T> List<T> filter(List<T> list, Predicate<T> condition) {
