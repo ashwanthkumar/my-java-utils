@@ -11,6 +11,8 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 - Lists#find
 - Lists#mkString
 - Lists#Nil
+- Lists#concat
+- Lists#flatten
 
 ### Set
 - Sets#copy
