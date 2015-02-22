@@ -78,6 +78,22 @@ public class ListsTest {
         assertThat(output.size(), is(10));
     }
 
+    @Test
+    public void shouldFlattenAListOfList() {
+        List<List<Integer>> listOfList = Lists.of(Lists.of(1, 2, 3), Lists.of(4, 5, 6));
+        List<Integer> flatten = Lists.flatten(listOfList);
+        for (int i = 1; i <= 6; i++) {
+            assertThat(flatten, hasItem(i));
+        }
+    }
+
+    @Test
+    public void shouldConcatMultipleList() {
+        List<Integer> flatten = concat(Lists.of(1, 2, 3), Lists.of(4, 5, 6));
+        for (int i = 1; i <= 6; i++) {
+            assertThat(flatten, hasItem(i));
+        }
+    }
 
     private Predicate<Integer> pickOddNumbers() {
         return new Predicate<Integer>() {

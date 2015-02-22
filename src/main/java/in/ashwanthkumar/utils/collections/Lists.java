@@ -4,10 +4,10 @@ import in.ashwanthkumar.utils.func.Function;
 import in.ashwanthkumar.utils.func.Predicate;
 import in.ashwanthkumar.utils.lang.option.None;
 import in.ashwanthkumar.utils.lang.option.Option;
-import in.ashwanthkumar.utils.lang.option.Some;
 import in.ashwanthkumar.utils.lang.tuple.Tuple2;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -61,6 +61,23 @@ public class Lists {
         }
 
         return new None<T>();
+    }
+
+
+    public static <K,T extends Collection<K>> List<K> flatten(Collection<T> elem) {
+        ArrayList<K> flattened = new ArrayList<K>();
+        for (Collection<K> data : elem) {
+            flattened.addAll(data);
+        }
+        return flattened;
+    }
+
+    public static <T> List<T> concat(Collection<T>... elems) {
+        ArrayList<T> concated = new ArrayList<T>();
+        for (Collection<T> elem : elems) {
+            concated.addAll(elem);
+        }
+        return concated;
     }
 
     public static <T> String mkString(Iterable<T> collection) {
