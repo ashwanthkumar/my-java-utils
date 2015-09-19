@@ -27,6 +27,7 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 - Iterables#isEmpty
 - Iterables#nonEmpty
 - Iterables#toMap
+- Iterables#foreach
 
 ### Maps
 - Maps#of
