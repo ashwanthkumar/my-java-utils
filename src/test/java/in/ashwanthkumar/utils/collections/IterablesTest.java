@@ -1,7 +1,11 @@
 package in.ashwanthkumar.utils.collections;
 
+import in.ashwanthkumar.utils.func.Function;
 import in.ashwanthkumar.utils.func.Predicate;
 import org.junit.Test;
+import org.mockito.Mockito;
+import org.mockito.internal.verification.Times;
+import org.mockito.verification.VerificationMode;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -11,6 +15,8 @@ import static in.ashwanthkumar.utils.collections.Lists.Nil;
 import static in.ashwanthkumar.utils.lang.option.Option.option;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class IterablesTest {
 
@@ -84,5 +90,20 @@ public class IterablesTest {
         Integer head = head(list);
         assertThat(head, is(1));
     }
+
+    @Test
+    public void shouldIterateUsingForEach() {
+        List<Integer> list = Lists.of(1, 2, 3, 4, 5);
+        final Object mock = mock(Object.class);
+        foreach(list, new Function<Integer, Void>() {
+            @Override
+            public Void apply(Integer input) {
+                mock.hashCode();
+                return null;
+            }
+        });
+        verify(mock, new Times(5)).hashCode();
+    }
+
 
 }

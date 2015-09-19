@@ -1,5 +1,6 @@
 package in.ashwanthkumar.utils.collections;
 
+import in.ashwanthkumar.utils.func.Function;
 import in.ashwanthkumar.utils.func.Predicate;
 import in.ashwanthkumar.utils.lang.option.Option;
 import in.ashwanthkumar.utils.lang.tuple.Tuple2;
@@ -51,5 +52,10 @@ public class Iterables {
         return map;
     }
 
+    public static <T> void foreach(Iterable<T> input, Function<T, Void> condition) {
+        for (T data : input) {
+            condition.apply(data);
+        }
+    }
 
 }
