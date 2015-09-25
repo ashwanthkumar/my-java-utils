@@ -41,6 +41,8 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 
 ### Functions
 - Functions#identity
+- Functions#STDOUT
+- Functions#STDERR
 
 ### StringUtils
 - StringUtils#isNotEmpty
