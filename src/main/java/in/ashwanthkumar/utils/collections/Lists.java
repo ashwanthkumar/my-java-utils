@@ -6,10 +6,7 @@ import in.ashwanthkumar.utils.lang.option.None;
 import in.ashwanthkumar.utils.lang.option.Option;
 import in.ashwanthkumar.utils.lang.tuple.Tuple2;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static in.ashwanthkumar.utils.lang.option.Option.option;
 import static in.ashwanthkumar.utils.lang.tuple.Tuple2.tuple2;
@@ -99,5 +96,31 @@ public class Lists {
         builder.delete(builder.length() - (separator.length() + 1), builder.length());
         builder.append(end);
         return builder.toString();
+    }
+
+    public static <T> List<T> take(Iterable<T> input, int size) {
+        List<T> output = new ArrayList<T>();
+        int count = 0;
+        Iterator<T> iterator = input.iterator();
+        while(iterator.hasNext() && count < size) {
+            output.add(iterator.next());
+            count++;
+        }
+        return output;
+    }
+
+    /**
+     * Takes elements from the list as long as the predicate is met and stops after that.
+     */
+    public static <T> List<T> takeWhile(Iterable<T> input, Predicate<T> predicate) {
+        List<T> output = new ArrayList<T>();
+        for (T elem : input) {
+            if (predicate.apply(elem)) {
+                output.add(elem);
+            } else {
+                break;
+            }
+        }
+        return output;
     }
 }

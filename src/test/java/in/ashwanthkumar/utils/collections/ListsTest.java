@@ -3,6 +3,7 @@ package in.ashwanthkumar.utils.collections;
 import in.ashwanthkumar.utils.func.Function;
 import in.ashwanthkumar.utils.func.Functions;
 import in.ashwanthkumar.utils.func.Predicate;
+import in.ashwanthkumar.utils.func.Predicates;
 import in.ashwanthkumar.utils.lang.option.None;
 import in.ashwanthkumar.utils.lang.option.Option;
 import in.ashwanthkumar.utils.lang.tuple.Tuple2;
@@ -49,6 +50,7 @@ public class ListsTest {
         assertThat(mkString(Lists.of(1, 2, 3, 4, 5)), is("1, 2, 3, 4, 5"));
         assertThat(mkString(Lists.of(1, 2, 3, 4, 5), "(", ")", ","), is("(1, 2, 3, 4, 5)"));
     }
+
     @Test
     public void shouldFindAnElementFromList() {
         Option<Integer> value = find(Lists.of(1, 2, 3, 4, 5), new Predicate<Integer>() {
@@ -99,6 +101,21 @@ public class ListsTest {
     public void shouldCreateStringFromListWithSeparator() {
         assertThat(mkString(Lists.of(1, 2, 3, 4, 5), ","), is("1, 2, 3, 4, 5"));
     }
+
+    @Test
+    public void shouldTakeFirstKFromList() {
+        assertThat(take(Lists.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 5), is(Lists.of(1, 2, 3, 4, 5)));
+        assertThat(take(Lists.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 0), is(Lists.<Integer>Nil()));
+        assertThat(take(Lists.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 10), is(Lists.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)));
+    }
+
+    @Test
+    public void shouldTakeWhilePredicateMatches() {
+        assertThat(takeWhile(Lists.of(1, 3, 5, 7, 9, 10), pickOddNumbers()), is(Lists.of(1, 3, 5, 7, 9)));
+        assertThat(takeWhile(Lists.of(1, 3, 5, 7, 9, 10), Predicates.<Integer>True()), is(Lists.of(1, 3, 5, 7, 9, 10)));
+        assertThat(takeWhile(Lists.of(1, 3, 5, 7, 9, 10), Predicates.<Integer>False()), is(Lists.<Integer>Nil()));
+    }
+
 
     private Predicate<Integer> pickOddNumbers() {
         return new Predicate<Integer>() {
