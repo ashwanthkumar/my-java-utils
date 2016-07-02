@@ -46,7 +46,7 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 - Functions#STDOUT
 - Functions#STDERR
 
-## Predicates
+### Predicates
 - Predicates#True
 - Predicates#False
 
