@@ -84,6 +84,10 @@ public class Lists {
         return mkString(collection, "", "", ",");
     }
 
+    public static <T> String mkString(Iterable<T> collection, String separator) {
+        return mkString(collection, "", "", separator);
+    }
+
     public static <T> String mkString(Iterable<T> collection, String start, String end, String separator) {
         StringBuilder builder = new StringBuilder();
         builder.append(start);
