@@ -13,6 +13,8 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 - Lists#Nil
 - Lists#concat
 - Lists#flatten
+- Lists#take
+- Lists#takeWhile
 
 ### Set
 - Sets#copy
@@ -43,6 +45,10 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 - Functions#identity
 - Functions#STDOUT
 - Functions#STDERR
+
+## Predicates
+- Predicates#True
+- Predicates#False
 
 ### StringUtils
 - StringUtils#isNotEmpty
