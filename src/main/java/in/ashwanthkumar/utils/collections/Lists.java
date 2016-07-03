@@ -88,12 +88,16 @@ public class Lists {
     public static <T> String mkString(Iterable<T> collection, String start, String end, String separator) {
         StringBuilder builder = new StringBuilder();
         builder.append(start);
+        boolean empty = true;
         for (T elem : collection) {
             builder.append(String.valueOf(elem));
             builder.append(separator);
             builder.append(" ");
+            empty = false;
         }
-        builder.delete(builder.length() - (separator.length() + 1), builder.length());
+        if (!empty) {
+            builder.delete(builder.length() - (separator.length() + 1), builder.length());
+        }
         builder.append(end);
         return builder.toString();
     }

@@ -103,6 +103,12 @@ public class ListsTest {
     }
 
     @Test
+    public void shouldCreateStringFromEmptyList() {
+        assertThat(mkString(Lists.Nil(), ","), is(""));
+    }
+
+
+    @Test
     public void shouldTakeFirstKFromList() {
         assertThat(take(Lists.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 5), is(Lists.of(1, 2, 3, 4, 5)));
         assertThat(take(Lists.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 0), is(Lists.<Integer>Nil()));
