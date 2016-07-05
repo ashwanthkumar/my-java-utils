@@ -18,4 +18,13 @@ public class Predicates {
             }
         };
     }
+
+    public static <T> Predicate<T> notNull() {
+        return new Predicate<T>() {
+            @Override
+            public Boolean apply(T input) {
+                return input != null;
+            }
+        };
+    }
 }

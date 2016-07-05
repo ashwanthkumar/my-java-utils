@@ -43,6 +43,14 @@ public class Lists {
         return filteredList;
     }
 
+    public static <T> List<T> filter(T[] array, Predicate<T> condition) {
+        ArrayList<T> filteredList = new ArrayList<T>();
+        for (T item : array) {
+            if (condition.apply(item)) filteredList.add(item);
+        }
+        return filteredList;
+    }
+
     public static <T, Z> Z foldL(Iterable<T> collection, Z initialValue, Function<Tuple2<Z, T>, Z> foldFunction) {
         Z foldedValue = initialValue;
         for (T item : collection) {
