@@ -1,8 +1,10 @@
 package in.ashwanthkumar.utils.parser;
 
+import in.ashwanthkumar.utils.collections.Lists;
 import in.ashwanthkumar.utils.func.Function;
 import in.ashwanthkumar.utils.lang.StringUtils;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,7 +20,8 @@ public class Parsers {
                     String substring = input.substring(size(literal));
                     return Success.of(literal, substring);
                 } else {
-                    return Failure.of("expected " + literal + " but found " + input.substring(0, size(literal)), input);
+                    int size = Math.min(size(literal), size(input));
+                    return Failure.of(String.format("expected '%s' but found '%s'", literal, input.substring(0, size)), input);
                 }
             }
         };
