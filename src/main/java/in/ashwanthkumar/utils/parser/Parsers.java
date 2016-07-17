@@ -62,4 +62,23 @@ public class Parsers {
             }
         };
     }
+
+    /**
+     * Applies the parser repeatedly on the input
+     */
+    public static <T> Parser<List<T>> Sequence(final Parser<T> parser) {
+        return new Parser<List<T>>() {
+            @Override
+            public ParserResult<List<T>> parse(String input) {
+                List<T> results = Lists.<T>Nil();
+                ParserResult<T> result = parser.parse(input);
+                while (result.successful()) {
+                    results.add(result.get());
+                    result = parser.parse(result.getRemainingInput());
+                }
+
+                return Success.of(results, result.getRemainingInput());
+            }
+        };
+    }
 }
