@@ -27,4 +27,9 @@ public abstract class ParserResult<T> {
     public String getRemainingInput() {
         return remainingInput;
     }
+
+    public ParserResult setRemainingInput(String remainingInput) {
+        this.remainingInput = remainingInput;
+        return this;
+    }
 }
