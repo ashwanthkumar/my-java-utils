@@ -66,6 +66,36 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 - IO#linesFromFile
 - IO#linesFromInputStream
 
+### Monodic Parsers
+```java
+Parser<String> parser = Literal("input");
+ParserResult<String> result = parser.parse("input is awesome"); // returns Success<String>
+ParserResult<String> result = parser.parse("output is awesome"); // returns Failure<String>
+```
+
+Inspired from Scala's [Parser Combinator](https://github.com/scala/scala-parser-combinators) and JS [Parsimmon](https://github.com/jneen/parsimmon).
+Take a look at [TemplateParser](https://github.com/ashwanthkumar/my-java-utils/blob/master/src/main/java/in/ashwanthkumar/utils/template/TemplateParser.java), it's implemented using this parser package.
+
+### Parsers
+- Parsers#Literal
+- Parsers#Character
+- Parsers#Integer
+- Parsers#Double
+- Parsers#Regex
+- Parsers#Sequence
+
+### Parser
+- Parser#map
+- Parser#thenR
+- Parser#thenL
+- Parser#then
+- Parser#or
+- Parser#debug
+- Parser#skip
+
+### TemplateParser
+Supports `#{variable}` and `#{variable?default}` type syntax based rendering. Inspired from [sbt-editsource](http://software.clapper.org/sbt-editsource/#variables) plugin.
+
 ## Dependencies
 
 For Maven,
