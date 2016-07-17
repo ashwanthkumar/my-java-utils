@@ -67,6 +67,15 @@ public class MapsTest {
     }
 
     @Test
+    public void shouldGetOrElseDefaultValueFromMap() {
+        Map<String, Integer> map = Maps.of("a", 1, "b", 2);
+        assertThat(Maps.getOrElse(map, "c", 3), is(3));
+        assertThat(Maps.getOrElse(map, "a", 3), is(1));
+        assertThat(Maps.getOrElse(map, "b", 3), is(2));
+    }
+
+
+    @Test
     public void shouldCreateMapUsingBuilder() {
         Map<String, String> map = Maps.<String, String>builder()
                 .put("a", "b")

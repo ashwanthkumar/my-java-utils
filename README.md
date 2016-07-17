@@ -35,6 +35,7 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 - Maps#of
 - Maps#builder
 - Maps#empty
+- Maps#getOrElse
 
 ### Lang
 - Option / Some / None

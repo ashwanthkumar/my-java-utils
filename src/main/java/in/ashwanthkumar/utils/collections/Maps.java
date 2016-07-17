@@ -45,6 +45,10 @@ public class Maps {
         return map;
     }
 
+    public static <K, V> V getOrElse(Map<K, V> map, K key, V defaultValue) {
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+
     public static class MapBuilder<K, V> {
         private Map<K, V> internalMap = new HashMap<K, V>();
 
