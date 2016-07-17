@@ -52,20 +52,22 @@ public abstract class Parser<T> {
      *
      * @return a `Parser` that -- on success -- returns the result of `another`.
      */
-    public Parser<T> thenL(final Parser<T> another) {
+    public <U> Parser<T> thenL(final Parser<U> another) {
         final Parser<T> me = this;
         return new Parser<T>() {
             @Override
             public ParserResult<T> parse(String input) {
                 ParserResult<T> myResult = me.parse(input);
                 if (myResult.successful()) {
-                    ParserResult<T> anotherResult = another.parse(myResult.getRemainingInput());
-                    return myResult.successful() && anotherResult.successful() ? myResult : anotherResult;
+                    ParserResult<U> anotherResult = another.parse(myResult.getRemainingInput());
+                    return myResult.successful() && anotherResult.successful() ?
+                            myResult.setRemainingInput(anotherResult.getRemainingInput()) :
+                            Failure.<T>of(((Failure<U>) anotherResult).getMessage(), myResult.getRemainingInput());
                 } else {
                     return myResult;
                 }
             }
-        };
+        }.named(this.name + " <~ " + another.name);
     }
 
     /**
