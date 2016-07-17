@@ -40,6 +40,15 @@ public class ParsersTest {
     }
 
     @Test
+    public void shouldCheckForDouble() {
+        Parser<Double> parser = Parsers.Double(3.14);
+        ParserResult<Double> result = parser.parse("3.14 is the value of PI");
+        assertThat(result.successful(), is(true));
+        assertThat(result.get(), is(3.14));
+        assertThat(result.remainingInput, is(" is the value of PI"));
+    }
+
+    @Test
     public void shouldComposeParsersTogether() {
         Parser<String> variableParser = Literal("#{")
                 .thenR(Regex(Pattern.compile("[a-zA-Z0-9]+")))
