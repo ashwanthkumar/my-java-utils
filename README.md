@@ -62,6 +62,7 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 ### IO
 - IO#fromFile
 - IO#linesFromFile
+- IO#linesFromInputStream
 
 ## Dependencies
 

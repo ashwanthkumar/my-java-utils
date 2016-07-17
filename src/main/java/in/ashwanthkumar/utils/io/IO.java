@@ -1,10 +1,9 @@
 package in.ashwanthkumar.utils.io;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.List;
 
 public class IO {
@@ -56,24 +55,35 @@ public class IO {
     }
 
     /**
-     * Read the file as a List&lt;String&gt; with each line as an item.
+     * Read the file as an Iterator&lt;String&gt; with each line as an item.
      *
      * @param source
      * @return
      * @throws IOException
      */
-    public static List<String> linesFromFile(String source) throws IOException {
+    public static Iterator<String> linesFromFile(String source) throws IOException {
         return linesFromFile(new File(source));
     }
 
-    public static List<String> linesFromFile(File source) throws IOException {
-        ArrayList<String> contents = new ArrayList<String>();
-        BufferedReader reader = new BufferedReader(new FileReader(source));
-        String line;
-        while ((line = reader.readLine()) != null) {
-            contents.add(line);
-        }
+    /**
+     * Read the file as an Iterator&lt;String&gt; with each line as an item.
+     *
+     * @param source
+     * @return
+     * @throws IOException
+     */
+    public static Iterator<String> linesFromFile(File source) throws IOException {
+        return new FileLineIterator(source);
+    }
 
-        return contents;
+    /**
+     * Read the file as an Iterator&lt;String&gt; with each line as an item.
+     *
+     * @param source
+     * @return
+     * @throws IOException
+     */
+    public static Iterator<String> linesFromInputStream(InputStream source) throws IOException {
+        return new FileLineIterator(source);
     }
 }
