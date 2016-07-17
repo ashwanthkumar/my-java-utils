@@ -90,7 +90,7 @@ public abstract class Parser<T> {
                     return Failure.of(((Failure<T>) myResult).getMessage(), myResult.getRemainingInput());
                 }
             }
-        };
+        }.named(this.name + " ~ " + another.name);
     }
 
     /**
@@ -106,6 +106,30 @@ public abstract class Parser<T> {
             public ParserResult<T> parse(String input) {
                 ParserResult<T> myResult = me.parse(input);
                 return myResult.successful() ? myResult : another.parse(input);
+            }
+        };
+    }
+
+    public Parser<T> debug() {
+        final Parser<T> me = this;
+        return new Parser<T>() {
+            @Override
+            public ParserResult<T> parse(String input) {
+                System.out.println("Trying " + me.name + " at '" + input + "'");
+                ParserResult<T> result = me.parse(input);
+                System.out.println(me.name + " --> " + result);
+                return result;
+            }
+        };
+    }
+
+    public Parser<T> skip(final int nChars) {
+        assert nChars > 0;
+        final Parser<T> me = this;
+        return new Parser<T>() {
+            @Override
+            public ParserResult<T> parse(String input) {
+                return me.parse(input.substring(nChars - 1));
             }
         };
     }
