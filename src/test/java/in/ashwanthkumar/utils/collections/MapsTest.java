@@ -17,6 +17,56 @@ public class MapsTest {
     }
 
     @Test
+    public void shouldCreateMapFrom2KVs() {
+        Map<String, String> map = Maps.of("a", "b", "c", "d");
+        assertThat(map, hasEntry("a", "b"));
+        assertThat(map, hasEntry("c", "d"));
+        assertThat(map.size(), is(2));
+    }
+
+    @Test
+    public void shouldCreateMapFrom3KVs() {
+        Map<String, String> map = Maps.of("a", "b", "c", "d", "e", "f");
+        assertThat(map, hasEntry("a", "b"));
+        assertThat(map, hasEntry("c", "d"));
+        assertThat(map, hasEntry("e", "f"));
+        assertThat(map.size(), is(3));
+    }
+
+    @Test
+    public void shouldCreateMapFrom4KVs() {
+        Map<String, String> map = Maps.of("a", "b", "c", "d", "e", "f", "g", "h");
+        assertThat(map, hasEntry("a", "b"));
+        assertThat(map, hasEntry("c", "d"));
+        assertThat(map, hasEntry("e", "f"));
+        assertThat(map, hasEntry("g", "h"));
+        assertThat(map.size(), is(4));
+    }
+
+    @Test
+    public void shouldCreateMapFrom5KVs() {
+        Map<String, String> map = Maps.of("a", "b", "c", "d", "e", "f", "g", "h", "i", "j");
+        assertThat(map, hasEntry("a", "b"));
+        assertThat(map, hasEntry("c", "d"));
+        assertThat(map, hasEntry("e", "f"));
+        assertThat(map, hasEntry("g", "h"));
+        assertThat(map, hasEntry("i", "j"));
+        assertThat(map.size(), is(5));
+    }
+
+    @Test
+    public void shouldCreateMapFrom6KVs() {
+        Map<String, String> map = Maps.of("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l");
+        assertThat(map, hasEntry("a", "b"));
+        assertThat(map, hasEntry("c", "d"));
+        assertThat(map, hasEntry("e", "f"));
+        assertThat(map, hasEntry("g", "h"));
+        assertThat(map, hasEntry("i", "j"));
+        assertThat(map, hasEntry("k", "l"));
+        assertThat(map.size(), is(6));
+    }
+
+    @Test
     public void shouldCreateMapUsingBuilder() {
         Map<String, String> map = Maps.<String, String>builder()
                 .put("a", "b")
