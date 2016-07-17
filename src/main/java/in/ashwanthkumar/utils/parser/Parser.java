@@ -16,7 +16,7 @@ public abstract class Parser<T> {
     /**
      * {@code this.map(transform)} succeeds if {@code this} succeeds and {@code transform} is used to convert the result of {@code this}
      *
-     * @param transform Function to transform the result from T -> U
+     * @param transform Function to transform the result from T -&gt; U
      * @return a `Parser` that -- on success -- returns the result after applying {@code transform}.
      */
     public <U> Parser<U> map(final Function<T, U> transform) {
@@ -32,6 +32,7 @@ public abstract class Parser<T> {
     /**
      * {@code this.thenR(another)} succeeds if {@code this} succeeds and {@code another} succeeds on the input left over by {@code this}
      *
+     * @param another Another Parser
      * @return a `Parser` that -- on success -- returns the result of `another`.
      */
     public <U> Parser<U> thenR(final Parser<U> another) {
@@ -50,6 +51,7 @@ public abstract class Parser<T> {
     /**
      * {@code this.thenL(another)} succeeds if {@code this} succeeds and {@code another} succeeds on the input left over by {@code this}
      *
+     * @param another Another Parser
      * @return a `Parser` that -- on success -- returns the result of `another`.
      */
     public <U> Parser<T> thenL(final Parser<U> another) {
@@ -73,6 +75,7 @@ public abstract class Parser<T> {
     /**
      * {@code this.thenL(another)} succeeds if {@code this} succeeds and {@code another} succeeds on the input left over by {@code this}
      *
+     * @param another Another Parser
      * @return a `Parser` that -- on success -- returns the result of both `this` and `another`
      */
     public <U> Parser<Tuple2<T, U>> then(final Parser<U> another) {
@@ -97,6 +100,7 @@ public abstract class Parser<T> {
      * {@code this.or(another)} succeeds if {@code this} succeeds or {@code another} succeeds on the given input.
      * {@code another} parser is not evaluated if {@code this} succeeds.
      *
+     * @param another Another Parser
      * @return a `Parser` that -- on success -- returns the result of either `this` or `another`
      */
     public Parser<T> or(final Parser<T> another) {
