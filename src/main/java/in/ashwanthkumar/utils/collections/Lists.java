@@ -100,11 +100,10 @@ public class Lists {
         for (T elem : collection) {
             builder.append(String.valueOf(elem));
             builder.append(separator);
-            builder.append(" ");
             empty = false;
         }
         if (!empty) {
-            builder.delete(builder.length() - (separator.length() + 1), builder.length());
+            builder.delete(builder.length() - separator.length(), builder.length());
         }
         builder.append(end);
         return builder.toString();

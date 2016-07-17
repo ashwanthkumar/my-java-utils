@@ -58,8 +58,8 @@ public class ListsTest {
 
     @Test
     public void shouldCreateStringFromList() {
-        assertThat(mkString(Lists.of(1, 2, 3, 4, 5)), is("1, 2, 3, 4, 5"));
-        assertThat(mkString(Lists.of(1, 2, 3, 4, 5), "(", ")", ","), is("(1, 2, 3, 4, 5)"));
+        assertThat(mkString(Lists.of(1, 2, 3, 4, 5)), is("1,2,3,4,5"));
+        assertThat(mkString(Lists.of(1, 2, 3, 4, 5), "(", ")", ", "), is("(1, 2, 3, 4, 5)"));
     }
 
     @Test
@@ -110,8 +110,8 @@ public class ListsTest {
 
     @Test
     public void shouldCreateStringFromListWithSeparator() {
-        assertThat(mkString(Lists.of(1, 2, 3, 4, 5), ","), is("1, 2, 3, 4, 5"));
-        assertThat(mkString(Lists.of(1), ","), is("1"));
+        assertThat(mkString(Lists.of(1, 2, 3, 4, 5), ", "), is("1, 2, 3, 4, 5"));
+        assertThat(mkString(Lists.of(1), ", "), is("1"));
     }
 
     @Test
