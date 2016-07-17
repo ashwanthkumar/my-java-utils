@@ -103,13 +103,13 @@ For Maven,
 <dependency>
   <groupId>in.ashwanthkumar</groupId>
   <artifactId>my-java-utils</artifactId>
-  <version>0.0.9</version>
+  <version>0.1.0</version>
 </dependency>
 ```
 
 For SBT,
 ```
-libraryDependencies += "in.ashwanthkumar" % "my-java-utils" % "0.0.9"
+libraryDependencies += "in.ashwanthkumar" % "my-java-utils" % "0.1.0"
 ```
 
 ## License
