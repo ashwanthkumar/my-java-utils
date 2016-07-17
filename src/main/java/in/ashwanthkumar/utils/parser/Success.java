@@ -23,7 +23,7 @@ public class Success<T> extends ParserResult<T> {
 
     @Override
     public <U> ParserResult<U> map(Function<T, U> transform) {
-        return Success.of(transform.apply(get()), remainingInput);
+        return Success.of(transform.apply(get()), getRemainingInput());
     }
 
     @Override
@@ -35,6 +35,7 @@ public class Success<T> extends ParserResult<T> {
     public String toString() {
         return "Success{" +
                 "result=" + result +
+                ",remaining=" + remainingInput +
                 '}';
     }
 }
