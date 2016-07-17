@@ -4,7 +4,14 @@ import in.ashwanthkumar.utils.func.Function;
 import in.ashwanthkumar.utils.lang.tuple.Tuple2;
 
 public abstract class Parser<T> {
+    private String name = "";
+
     abstract public ParserResult<T> parse(String input);
+
+    public Parser<T> named(String name) {
+        this.name = name;
+        return this;
+    }
 
     /**
      * {@code this.map(transform)} succeeds if {@code this} succeeds and {@code transform} is used to convert the result of {@code this}
