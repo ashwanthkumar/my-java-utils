@@ -21,6 +21,10 @@ public class StringUtils {
         return isNotEmpty(str) && str.startsWith(prefix);
     }
 
+    public static boolean endsWith(String str, String suffix) {
+        return isNotEmpty(str) && str.endsWith(suffix);
+    }
+
     public static int size(String str) {
         if (isNotEmpty(str)) return str.length();
         else return 0;

@@ -43,6 +43,12 @@ public class StringUtilsTest {
         assertThat(StringUtils.startsWith(null, "bar"), is(false));
     }
 
+    public void shouldCheckIfEndsWith() {
+        assertThat(StringUtils.endsWith("foobarbaz", "baz"), is(true));
+        assertThat(StringUtils.endsWith("foobarbaz", "foo"), is(false));
+        assertThat(StringUtils.endsWith(null, "bar"), is(false));
+    }
+
     @Test
     public void shouldReturnSizeOfString() {
         assertThat(StringUtils.size("input"), is(5));

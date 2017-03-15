@@ -56,6 +56,7 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 - StringUtils#isNotEmpty
 - StringUtils#isEmpty
 - StringUtils#startsWith
+- StringUtils#endsWith
 - StringUtils#size
 - StringUtils#trim
 - StringUtils#isBlank
