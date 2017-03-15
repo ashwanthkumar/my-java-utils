@@ -67,7 +67,7 @@ Set of Java utils that I take along with my OSS java projects. Most of them are 
 - IO#linesFromFile
 - IO#linesFromInputStream
 
-### Monodic Parsers
+### Monadic Parsers
 ```java
 Parser<String> parser = Literal("input");
 ParserResult<String> result = parser.parse("input is awesome"); // returns Success<String>
