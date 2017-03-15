@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>in.ashwanthkumar</groupId>
     <artifactId>my-java-utils</artifactId>
-    <version>0.1.1-SNAPSHOT</version>
+    <version>0.1.1</version>
     <name>Ashwanth's Java Utils</name>
     <description>My personal set of utils that I take along with my java projects.</description>
 
